@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}New Feedback{% endblock %}
+
+{% block content %}
+   <h1>Add your feedback</h1>
+   <form class="col-md-6 offset-md-3 mt-4" method="POST">
+
+      {{ form.hidden_tag() }}
+   
+      {% for field in form 
+      if field.widget.input_type != 'hidden' %}
+      <div class="col justify-content-center">
+            {{ field.label }}
+            {{ field(class_="form-control") }}
+   
+            {% for error in field.errors %}
+            {{ error }}
+            {% endfor %}
+      </div>   
+      {% endfor %}
+   
+      <button class="btn btn-success mt-4" type="submit">Add feedback</button>
+   </form>
+{% endblock %}
